@@ -33,6 +33,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'capybara', '~> 2.5'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'simplecov', :require => false
 end
 
 group :development do
