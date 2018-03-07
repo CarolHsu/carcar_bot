@@ -3,8 +3,6 @@ require 'dialog/passenger/profile'
 
 describe Dialog::Passenger::Profile do
   
-  describe '#initialize' do
-  end
 
   describe '#start' do
   end
