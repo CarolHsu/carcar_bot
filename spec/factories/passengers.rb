@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :passenger do
     line_user_id "MyString"
     first_name "MyString"
