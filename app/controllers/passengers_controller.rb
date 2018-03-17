@@ -1,52 +1,45 @@
 require 'line/bot'
 class PassengersController < ApplicationController
-  def is_alive
-    head :ok
-  end
+  before_action :get_current_passenger
 
-  def dialog
-    @client = Line::Bot::Client.new { |config|
-      config.channel_secret = Figaro.env.channel_secret
-      config.channel_token = Figaro.env.channel_token
-    }
-    events = client.parse_events_from(params)
-    set_user_info(events) if is_first_time_follow?(events)
-    say_i_dont_know(events) unless include_key_word?(events)
+  def reply
+    set_passenger_line_user_id unless @passenger
+    message = dialog_generator
+    answer(message)
     head :ok
   end
 
   private
-  def set_user_info(events)
-    event = events.first
-    passenger =  Passenger.new
-    passenger.line_user_id = event.source.user_id
-    passenger.save
+
+  def get_current_passenger
+    create_line_client
+    @passenger = Passenger.find_by(line_user_id: @line_user_id)
   end
 
-  def is_first_time_follow?(events)
-    event = events.first
-    if event.type == "follow" and event.source.type == "user"
-      user_id = event.source.user_id
-      true unless Passenger.where(line_user_id: user_id).any?
+  def set_passenger_line_user_id
+    @passenger = Passenger.create(line_user_id: @line_user_id)
+  end
+
+  def create_line_client
+    @client = Line::Bot::Client.new do |client|
+      config.channel_secret = Figaro.env.channel_secret
+      config.channel_token = Figaro.env.channel_token
     end
-    false
+    parse_params
+  end
+  
+  def parse_params
+    event = params[:events].first
+    @line_user_id = event[:source][:userId]
+    @reply_token = event[:replyToken]
+    @message = event[:message][:text].strip
   end
 
-  def include_key_word?(events)
-    return unless events.size == 1
-    event = event.first
-    return unless event == Line::Bot::Event::Message
-    return unless event.type == Line::Bot::Event::MessageType::Text
-    key_word = event.message['text']
-    return unless DEFAULT_SERVICES.values.include? key_word
-
-    service = DEFAULT_SERVICES[key_word]
-    dialog = Dialog::Passenger::Base.new(service)
-    dialog.start
+  def dialog_generator
+    Dialog::Passenger::Base.new(@passenger, @message)
   end
 
-  def say_i_dont_know(events)
-    reply_token = events.first['replyToken']
-    @client.reply_message(reply_token, 'sorry... I can not understand :(')
+  def answer(message)
+    @client.reply_message(@reply_token, message)
   end
 end
