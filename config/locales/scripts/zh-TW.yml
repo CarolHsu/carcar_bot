@@ -1,0 +1,22 @@
+zh-TW:
+  scripts:
+    profile:
+      name: "請告訴我您的名字"
+      phone: "請留下您的聯絡電話，請放心，這僅限於司機需要與您聯繫時使用"
+    airport:
+      date: "請告訴我您預計的出發時間"
+      location: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
+      flight: "請留下您的航班號碼，司機會保證將您在安全的時間範圍內送至機場"
+      people: "乘車人數"
+      luggages: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
+      chaircart: "是否有輪椅？"
+      babycart: "是否有嬰兒車？"
+      babyseat: "是否需要嬰兒汽車座椅？"
+    calling:
+      duration: "請告訴我您願意等候的時間？時間長一點叫車越容易喔！"
+      location: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
+      people: "乘車人數"
+      luggages: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
+      chaircart: "是否有輪椅？"
+      babycart: "是否有嬰兒車？"
+      babyseat: "是否需要嬰兒汽車座椅？"
