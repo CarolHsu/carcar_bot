@@ -3,7 +3,7 @@ class Passenger < ApplicationRecord
   include AASM
 
   aasm do
-    state :inactive, initial: true
+    state :no_phone_number, initial: true
     state :no_name
     state :ready
 
