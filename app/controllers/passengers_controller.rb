@@ -1,4 +1,5 @@
 require 'line/bot'
+require 'dialog/passenger/base'
 class PassengersController < ApplicationController
   before_action :get_current_passenger
 
