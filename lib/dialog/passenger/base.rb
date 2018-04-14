@@ -8,9 +8,9 @@ module Dialog
       }
       
       def initialize(passenger, message)
-        @message = message
         @passenger = passenger
-        get_dialog_type
+        @message = message
+        get_current_dialog_type
         set_dialog_type unless @dialog_type
       end
 
@@ -21,12 +21,13 @@ module Dialog
 
       private
 
-      def get_dialog_type
+      def get_current_dialog_type
         @dialog_type = @passenger.settings.dialog_type
       end
 
       def set_dialog_type
         keyword = KEYWORDS[@message.to_sym]
+      transitions from: :no_name, to: :ready
         unless keyword.nil?
           @dialog_type = keyword
           @passenger.settings.dialog_type = keyword

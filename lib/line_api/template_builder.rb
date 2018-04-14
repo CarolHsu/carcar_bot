@@ -1,34 +1,43 @@
 module LineAPI
   class TemplateBuilder
-    attr_reader :type, :content
+    attr_reader :content
 
     BASIC_LAYOUT = {
       type: "template",
       template: {}
     }
 
-    def initialize(type, content)
-      @type = type
-      @content = content
+    DEFAULT_ACTIONS = {
+      type: "confirm",
+      text: nil,
+      action: [
+        {
+          type: "message",
+          label: "確認",
+          text: "yes"
+        },
+        {
+          type: "message",
+          label: "算了",
+          text: "no"
+        }
+      ]
+    }
+
+    def initialize(content, description=nil)
+      @content = content.nil? ? DEFAULT_ACTIONS : content
+      @content["text"] = description if description
     end
 
     def build
-      send("create_#{@type}")
+      create_template
     end
 
     private
 
-    def create_buttons
-      content_with_type = @content.merge({type: 'buttons'})
-      layout = BASIC_LAYOUT.merge({template: content_with_type})
-      layout
+    def create_template
+      BASIC_LAYOUT.merge({template: @content})
     end
 
-    def create_confirm
-      content_with_type = @content.merge({type: 'confirm'})
-      layout = BASIC_LAYOUT.merge({template: content_with_type})
-      layout
-    end
-      
   end
 end

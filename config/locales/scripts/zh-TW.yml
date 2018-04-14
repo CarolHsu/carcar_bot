@@ -1,22 +1,173 @@
 zh-TW:
   scripts:
     profile:
-      name: "請告訴我您的名字"
-      phone: "請留下您的聯絡電話，請放心，這僅限於司機需要與您聯繫時使用"
+      last_name: 
+        type: "text"
+        text: "請告訴我您的姓氏"
+      first_name: 
+        type: "buttons"
+        text: "如何稱呼您呢？"
+        actions: 
+          - type: "message"
+            label: "先生"
+            text: "先生"
+          - type: "message"
+            label: "小姐"
+            text: "小姐"
+      phone: 
+        type: "text"
+        text: "請留下您的聯絡電話，請放心，這僅限於司機需要與您聯繫時使用"
     airport:
-      date: "請告訴我您預計的出發時間"
-      location: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
-      flight: "請留下您的航班號碼，司機會保證將您在安全的時間範圍內送至機場"
-      people: "乘車人數"
-      luggages: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
-      chaircart: "是否有輪椅？"
-      babycart: "是否有嬰兒車？"
-      babyseat: "是否需要嬰兒汽車座椅？"
+      date: 
+        type: "text"
+        text: "請告訴我您預計的出發時間"
+      location: 
+        type: "text"
+        text: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
+      flight: 
+        type: "text"
+        text: "請留下您的航班號碼，司機會保證將您在安全的時間範圍內送至機場"
+      people: 
+        type: "buttons"
+        text: "乘車人數"
+        actions: 
+          - type: "message"
+            label: 1
+            text: 1
+          - type: "message"
+            label: 2
+            text: 2
+          - type: "message"
+            label: 3
+            text: 3
+          - type: "message"
+            label: 4
+            text: 4
+      luggages: 
+        type: "buttons"
+        text: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
+        actions: 
+          - type: "message"
+            label: "沒有行李"
+            text: 0
+          - type: "message"
+            label: 1
+            text: 1
+          - type: "message"
+            label: 2
+            text: 2
+          - type: "message"
+            label: "多於 3 個"
+            text: 3
+      chaircart: 
+        type: "confirm"
+        text: "是否有輪椅？"
+        actions: 
+          - type: "message"
+            label: "有"
+            text: "yes"
+          - type: "message"
+            label: "沒有"
+            text: "no"
+      babycart: 
+        type: "confirm"
+        text: "是否有嬰兒車？"
+        actions: 
+          - type: "message"
+            label: "有"
+            text: "yes"
+          - type: "message"
+            label: "沒有"
+            text: "no"
+      babyseat: 
+        type: "confirm"
+        text: "是否需要嬰兒汽車座椅？"
+        actions: 
+          - type: "message"
+            label: "是"
+            text: "yes"
+          - type: "message"
+            label: "不需要"
+            text: "no"
     calling:
-      duration: "請告訴我您願意等候的時間？時間長一點叫車越容易喔！"
-      location: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
-      people: "乘車人數"
-      luggages: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
-      chaircart: "是否有輪椅？"
-      babycart: "是否有嬰兒車？"
-      babyseat: "是否需要嬰兒汽車座椅？"
+      duration: 
+        type: "buttons"
+        text: "請告訴我您願意等候的時間？時間長一點叫車越容易喔！"
+        actions: 
+          - type: "message"
+            label: "5 分鐘"
+            text: 5
+          - type: "message"
+            label: "10 分鐘"
+            text: 10
+          - type: "message"
+            label: "15 分鐘"
+            text: 15
+          - type: "message"
+            label: "超過 20 分鐘"
+            text: 20
+      location: 
+        type: "text"
+        text: "請告訴我您的位置，點選 Line 地圖 line://nv/location"
+      people: 
+        type: "buttons"
+        text: "乘車人數"
+        actions: 
+          - type: "message"
+            label: 1
+            text: 1
+          - type: "message"
+            label: 2
+            text: 2
+          - type: "message"
+            label: 3
+            text: 3
+          - type: "message"
+            label: 4
+            text: 4
+      luggages: 
+        type: "buttons"
+        text: "行李數: 以 28 寸行李箱為準，若您有至少一個超過 28 寸的行李箱請點選『更多』"
+        actions: 
+          - type: "message"
+            label: "沒有行李"
+            text: 0
+          - type: "message"
+            label: 1
+            text: 1
+          - type: "message"
+            label: 2
+            text: 2
+          - type: "message"
+            label: "多於 3 個"
+            text: 3
+      chaircart: 
+        type: "confirm"
+        text: "是否有輪椅？"
+        actions: 
+          - type: "message"
+            label: "有"
+            text: "yes"
+          - type: "message"
+            label: "沒有"
+            text: "no"
+      babycart: 
+        type: "confirm"
+        text: "是否有嬰兒車？"
+        actions: 
+          - type: "message"
+            label: "有"
+            text: "yes"
+          - type: "message"
+            label: "沒有"
+            text: "no"
+      babyseat: 
+        type: "confirm"
+        text: "是否需要嬰兒汽車座椅？"
+        actions: 
+          - type: "message"
+            label: "是"
+            text: "yes"
+          - type: "message"
+            label: "不需要"
+            text: "no"

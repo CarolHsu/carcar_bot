@@ -3,16 +3,16 @@ class Passenger < ApplicationRecord
   include AASM
 
   aasm do
-    state :no_phone_number, initial: true
-    state :no_name
-    state :ready
-
-    event :get_phone do
-      transitions from: :inactive, to: :no_name
-    end
-
-    event :get_name do
-      transitions from: :no_name, to: :ready
+    state :inactive, initial: true
+    state :active
+    event :register do
+      transitions from: :inactive, to: :active do
+        after do
+          self.is_active = true
+          self.save
+        end
+      end
     end
   end
+
 end
